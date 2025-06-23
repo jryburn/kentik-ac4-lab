@@ -1,0 +1,41 @@
+graph srl-evpn-clos2.clab {
+	leaf3--spine1[ color=black ];
+	leaf4--spine2[ color=black ];
+	leaf7--spine1[ color=black ];
+	leaf8--spine2[ color=black ];
+	leaf4--host2[ color=black ];
+	leaf1--spine2[ color=black ];
+	leaf2--spine2[ color=black ];
+	leaf4--spine1[ color=black ];
+	leaf7--spine2[ color=black ];
+	leaf8--spine1[ color=black ];
+	leaf1--host1[ color=black ];
+	leaf8--host4[ color=black ];
+	leaf2--spine1[ color=black ];
+	leaf3--spine2[ color=black ];
+	leaf5--spine1[ color=black ];
+	leaf3--host2[ color=black ];
+	leaf7--host4[ color=black ];
+	leaf1--spine1[ color=black ];
+	leaf5--spine2[ color=black ];
+	leaf6--spine1[ color=black ];
+	leaf6--spine2[ color=black ];
+	leaf2--host1[ color=black ];
+	leaf5--host3[ color=black ];
+	leaf6--host3[ color=black ];
+	host1 [ color=red, fillcolor=red, label=host1, style=filled, xlabel=linux ];
+	host2 [ color=red, fillcolor=red, label=host2, style=filled, xlabel=linux ];
+	host3 [ color=red, fillcolor=red, label=host3, style=filled, xlabel=linux ];
+	host4 [ color=red, fillcolor=red, label=host4, style=filled, xlabel=linux ];
+	leaf1 [ color=red, fillcolor=red, label=leaf1, style=filled, xlabel=srl ];
+	leaf2 [ color=red, fillcolor=red, label=leaf2, style=filled, xlabel=srl ];
+	leaf3 [ color=red, fillcolor=red, label=leaf3, style=filled, xlabel=srl ];
+	leaf4 [ color=red, fillcolor=red, label=leaf4, style=filled, xlabel=srl ];
+	leaf5 [ color=red, fillcolor=red, label=leaf5, style=filled, xlabel=srl ];
+	leaf6 [ color=red, fillcolor=red, label=leaf6, style=filled, xlabel=srl ];
+	leaf7 [ color=red, fillcolor=red, label=leaf7, style=filled, xlabel=srl ];
+	leaf8 [ color=red, fillcolor=red, label=leaf8, style=filled, xlabel=srl ];
+	spine1 [ color=red, fillcolor=red, label=spine1, style=filled, xlabel=srl ];
+	spine2 [ color=red, fillcolor=red, label=spine2, style=filled, xlabel=srl ];
+
+}
