@@ -1,4 +1,4 @@
-name: evpn-mh
+name: evpn-clos2
 
 topology:
   kinds:
