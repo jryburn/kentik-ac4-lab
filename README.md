@@ -141,39 +141,58 @@ root@host:~/kentik-ac4-lab# containerlab deploy -t srl-evpn-clos2.clab.yml
 
 When containerlab finishes the deployment it provides a summary table that outlines connection details of the deployed nodes. In the "Name" column we have the names of the deployed containers and those names can be used to reach the nodes, for example to connect to the SSH of `leaf1`:
 
-# default credentials admin:NokiaSrl1!
+## Connect to the devices
+
+**Default credentials admin:NokiaSrl1!**
+
+To connect to the SR-L switches:
 
 ```bash
-ssh admin@kentik-ac4-lab-leaf1
+ssh admin@clab-evpn-clos2-leaf1
 ```
 
 To connect Alpine Linux (hosts):
 
 ```bash
-docker exec -it kentik-ac4-lab-host1 bash
+docker exec -it clab-evpn-clos2-host1 /bin/bash
 ```
 
 ## Verify pre-configurations
 
-Check the fabric configurations:
+### Check the fabric configurations
 
+On spine1:
 ```bash
-A:spine1# show network-instance default protocols bgp neighbor
-```
-```bash
-A:spine2# show network-instance default protocols bgp neighbor
+show network-instance default protocols bgp neighbor
 ```
 
+On spine2:
 ```bash
-A:leaf1# info network-instance default
+show network-instance default protocols bgp neighbor
 ```
 
+On leaf1:
 ```bash
-A:leaf1# info network-instance mac-vrf-1
+info network-instance default
+```
+```bash
+info network-instance mac-vrf-1
 ```
 
-Check the host interfaces:
+### Check the host interfaces
 
+On host1:
 ```bash
-bash-5.0# ip address
+ip address
+```
+```bash
+ping 10.40.40.30
+```
+
+On host2:
+```bash
+ip address
+```
+```bash
+ping 10.78.78.78
 ```
