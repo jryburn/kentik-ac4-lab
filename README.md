@@ -5,7 +5,6 @@ This lab sets up a pre-configured SR Linux-based fabric that forms the basis of 
 # Topology
 
 The topology comprises two spine switches, eight leaf switches, and four Alpine Linux hosts. Each host is mulit-homed to two different leaf switches. Hosts 1 & 3 are connected via an L2 EVPN and have IP addresses in the same subnet. Hosts 2 & 4 are connected via an L3 EVPN. They have IP addresses in different subnets but can route to one another through the fabric.
-A multi-homed CE is connected to leaf1, while another is linked to leaf3 for testing purposes.
 
 TODO: Create a diagram to insert here
 
