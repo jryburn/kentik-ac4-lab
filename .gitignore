@@ -1,0 +1,5 @@
+# Clab Backup Files
+*.clab.yml.bak
+
+# Clab Artifacts
+clab-evpn-clos2/
