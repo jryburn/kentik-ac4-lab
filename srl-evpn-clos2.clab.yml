@@ -15,12 +15,12 @@ topology:
     # srl nodes with startup configs
     spine1:
       kind: nokia_srlinux
-      type: ixrd5
+      type: ixr-d5
       startup-config: configs/spine1.cfg
       mgmt-ipv4: 172.20.20.21
     spine2:
       kind: nokia_srlinux
-      type: ixrd5
+      type: ixr-d5
       startup-config: configs/spine2.cfg
       mgmt-ipv4: 172.20.20.22
     leaf1:
