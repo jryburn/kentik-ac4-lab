@@ -17,6 +17,51 @@ KENTIK_PLAN_ID = 12345
 # NOTE: Click on the site to get the ID from the URL
 KENTIK_SITE_ID = 12345
 
+# List of devices to configure
+devices = [
+    {
+        "ip": "172.20.20.11",
+        "kentik_device_name": "leaf1",
+    },
+    {
+        "ip": "172.20.20.12",
+        "kentik_device_name": "leaf2",
+    },
+    {
+        "ip": "172.20.20.13",
+        "kentik_device_name": "leaf3",
+    },
+    {
+        "ip": "172.20.20.14",
+        "kentik_device_name": "leaf4",
+    },
+    {
+        "ip": "172.20.20.15",
+        "kentik_device_name": "leaf5",
+    },
+    {
+        "ip": "172.20.20.16",
+        "kentik_device_name": "leaf6",
+    },
+    {
+        "ip": "172.20.20.17",
+        "kentik_device_name": "leaf7",
+    },
+    {
+        "ip": "172.20.20.18",
+        "kentik_device_name": "leaf8",
+    },
+    {
+        "ip": "172.20.20.21",
+        "kentik_device_name": "spine1",
+    },
+    {
+        "ip": "172.20.20.22",
+        "kentik_device_name": "spine2",
+    },
+    # Add more devices as needed
+]
+
 # Function to get device_id from Kentik by device name
 def get_device_id_from_kentik(device_name):
     headers = {
