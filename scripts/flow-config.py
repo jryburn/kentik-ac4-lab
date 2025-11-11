@@ -1,5 +1,4 @@
 import requests
-from pygnmi.client import gNMIclient
 
 # Kentik email, token, and API base URL
 # Replace with your Kentik account email located at:
@@ -9,80 +8,6 @@ KENTIK_API_EMAIL = "user@domain.com"
 # https://portal.kentik.com/v4/profile/auth
 KENTIK_API_TOKEN = "mylongapitoken"
 KENTIK_API_BASE_URL = "https://grpc.api.kentik.com/device/v202308beta1/device"
-
-# SR Linux device credentials
-SRL_USERNAME = "admin"
-SRL_PASSWORD = "NokiaSrl1!"
-
-# gNMI connection settings
-GNMI_PORT = 57401
-INSECURE = True
-SKIP_VERIFY = True
-
-# List of devices to configure
-devices = [
-    {
-        "ip": "172.20.20.11",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf1",
-    },
-    {
-        "ip": "172.20.20.12",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf2",
-    },
-    {
-        "ip": "172.20.20.13",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf3",
-    },
-    {
-        "ip": "172.20.20.14",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf4",
-    },
-    {
-        "ip": "172.20.20.15",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf5",
-    },
-    {
-        "ip": "172.20.20.16",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf6",
-    },
-    {
-        "ip": "172.20.20.17",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf7",
-    },
-    {
-        "ip": "172.20.20.18",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "leaf8",
-    },
-    {
-        "ip": "172.20.20.21",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "spine1",
-    },
-    {
-        "ip": "172.20.20.22",
-        "username": SRL_USERNAME,
-        "password": SRL_PASSWORD,
-        "kentik_device_name": "spine2",
-    },
-    # Add more devices as needed
-]
 
 
 # Function to get device_id from Kentik by device name
@@ -154,64 +79,12 @@ def configure_device_in_kentik(device):
         print(f"Failed to update device {device_name} in Kentik: {e}")
 
 
-# Function to configure sFlow on the SR Linux switch using gNMI
-def configure_sflow_on_switch(device):
-    try:
-        # gNMI path for sFlow configuration
-        paths = [
-            # Base path for sFlow configuration
-            "/system/sflow",
-            # Sample rate path
-            "/system/sflow/sample-rate",
-            # Collector configuration path
-            "/system/sflow/collector",
-            # Source interface path
-            "/system/sflow/interface"
-        ]
-
-        # Connect to the SR Linux device
-        with gNMIclient(
-                target=(device["ip"], GNMI_PORT),
-                username=device["username"],
-                password=device["password"],
-                insecure=INSECURE,
-                skip_verify=SKIP_VERIFY
-        ) as gnmi:
-            # Configure sFlow
-            updates = [
-                # Enable sFlow
-                (paths[0], {"admin-state": "enable"}),
-                # Set sample rate
-                (paths[1], {"rate": 512}),
-                # Configure collector
-                (paths[2], {
-                    "collector-address": "172.20.20.1",
-                    "network-instance": "mgmt",
-                    "port": 9995
-                }),
-                # Set source interface to mgmt0
-                (paths[3], {"name": "mgmt0"})
-            ]
-
-            # Apply configuration using gNMI SetRequest
-            gnmi.set(update=updates)
-            print(f"sFlow configuration applied to switch {device['ip']}.")
-    except (gNMIclient.Error, ConnectionError) as e:
-        print(f"Failed to configure sFlow on the switch {device['ip']}: {e}")
-
-
-# Main function to loop through each device, configure sFlow,
+# Main function to loop through each device
 # and then send batch update to Kentik
 def main():
-    # Step 1: Update devices in Kentik with the IPs that will sending flow
+    # Update devices in Kentik with the IPs that will sending flow
     for device in devices:
         configure_device_in_kentik(device)
-
-    # Step 2: Configure sFlow on each switch
-    for device in devices:
-        print(f"Configuring device: {device['kentik_device_name']}")
-        print(f"IP address: {device['ip']}")
-        configure_sflow_on_switch(device)
 
 
 if __name__ == "__main__":
