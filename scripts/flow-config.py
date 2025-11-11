@@ -8,7 +8,14 @@ KENTIK_API_EMAIL = "user@domain.com"
 # https://portal.kentik.com/v4/profile/auth
 KENTIK_API_TOKEN = "mylongapitoken"
 KENTIK_API_BASE_URL = "https://grpc.api.kentik.com/device/v202308beta1/device"
-
+# Replace with your Kentik plan ID located at:
+# https://portal.kentik.com/v4/licenses
+# NOTE: make sure it is labeled as "Free Flowpak Plan"
+KENTIK_PLAN_ID = 12345
+# Replace with your Kentik site ID located at:
+# https://portal.kentik.com/v4/core/quick-views/sites/
+# NOTE: Click on the site to get the ID from the URL
+KENTIK_SITE_ID = 12345
 
 # Function to get device_id from Kentik by device name
 def get_device_id_from_kentik(device_name):
@@ -62,8 +69,8 @@ def configure_device_in_kentik(device):
             "id": device["device_id"],
             "deviceName": device_name,
             "sendingIps": [device["ip"]],
-            "planId": 12345,  # Replace with your Kentik plan ID
-            "siteId": 12345,  # Replace with your Kentik site ID
+            "planId": KENTIK_PLAN_ID,
+            "siteId": KENTIK_SITE_ID,
             "deviceSampleRate": 512,
             "deviceDescription": f"{device_name} configured for sFlow"
         }
