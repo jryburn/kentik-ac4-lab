@@ -9,3 +9,7 @@ ip link set eth2 master bond0
 ip link set eth1 up 
 ip link set eth2 up  
 ip link set bond0 up
+
+# Install and start iperf3 server
+apk add --no-cache iperf3
+iperf3 -s -D
