@@ -13,8 +13,9 @@ ip link set bond0.78 up
 ip addr add 10.78.78.78/24 dev bond0.78
 ip route add 10.34.34.0/24 via 10.78.78.1
 
-# Install iperf3 and run continuous tests to host3
+# Install iperf3 and start server, then run continuous tests to host3
 apk add --no-cache iperf3
+iperf3 -s -D
 
 # Run iperf3 tests every 30 seconds continuously
 (while true; do
