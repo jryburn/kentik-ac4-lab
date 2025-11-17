@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # gNMI Capabilities Check Script
-# This script connects to all devices in the lab and retrieves their gNMI capabilities
+# This script connects to all devices in the lab via exposed gNMI ports and retrieves their capabilities
 
 echo "=========================================="
 echo "gNMI Capabilities Check"
@@ -12,18 +12,18 @@ echo ""
 USERNAME="admin"
 PASSWORD="NokiaSrl1!"
 
-# Array of devices with their management IPs
+# Array of devices with their exposed gNMI ports
 declare -A DEVICES=(
-    ["spine1"]="172.21.21.21"
-    ["spine2"]="172.21.21.22"
-    ["leaf1"]="172.21.21.11"
-    ["leaf2"]="172.21.21.12"
-    ["leaf3"]="172.21.21.13"
-    ["leaf4"]="172.21.21.14"
-    ["leaf5"]="172.21.21.15"
-    ["leaf6"]="172.21.21.16"
-    ["leaf7"]="172.21.21.17"
-    ["leaf8"]="172.21.21.18"
+    ["spine1"]="57421"
+    ["spine2"]="57422"
+    ["leaf1"]="57411"
+    ["leaf2"]="57412"
+    ["leaf3"]="57413"
+    ["leaf4"]="57414"
+    ["leaf5"]="57415"
+    ["leaf6"]="57416"
+    ["leaf7"]="57417"
+    ["leaf8"]="57418"
 )
 
 # Check if gnmic is installed
@@ -36,17 +36,17 @@ fi
 # Function to check capabilities for a device
 check_capabilities() {
     local device=$1
-    local ip=$2
+    local port=$2
     
     echo "----------------------------------------"
-    echo "Device: $device ($ip)"
+    echo "Device: $device (localhost:$port)"
     echo "----------------------------------------"
     
-    # Connect to gNMI via TCP from inside the container (port 57411 is the insecure gRPC port)
-    docker exec "clab-evpn-clos2-$device" gnmic -a 127.0.0.1:57411 \
+    # Connect to gNMI via exposed port
+    gnmic -a localhost:$port \
         -u "$USERNAME" \
         -p "$PASSWORD" \
-        --insecure \
+        --skip-verify \
         --timeout 10s \
         capabilities
     
