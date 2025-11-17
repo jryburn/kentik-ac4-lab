@@ -62,6 +62,7 @@ devices = [
     # Add more devices as needed
 ]
 
+
 # Function to get device_id from Kentik by device name
 def get_device_id_from_kentik(device_name):
     headers = {
