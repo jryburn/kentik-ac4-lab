@@ -18,51 +18,71 @@ topology:
       type: ixr-d5
       startup-config: configs/spine1.cfg
       mgmt-ipv4: 172.20.20.21
+      ports:
+        - 57421:57400
     spine2:
       kind: nokia_srlinux
       type: ixr-d5
       startup-config: configs/spine2.cfg
       mgmt-ipv4: 172.20.20.22
+      ports:
+        - 57422:57400
     leaf1:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf1.cfg
       mgmt-ipv4: 172.20.20.11
+      ports:
+        - 57411:57400
     leaf2:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf2.cfg
       mgmt-ipv4: 172.20.20.12
+      ports:
+        - 57412:57400
     leaf3:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf3.cfg
       mgmt-ipv4: 172.20.20.13
+      ports:
+        - 57413:57400
     leaf4:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf4.cfg
       mgmt-ipv4: 172.20.20.14
+      ports:
+        - 57414:57400
     leaf5:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf5.cfg
       mgmt-ipv4: 172.20.20.15
+      ports:
+        - 57415:57400
     leaf6:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf6.cfg
       mgmt-ipv4: 172.20.20.16
+      ports:
+        - 57416:57400
     leaf7:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf7.cfg
       mgmt-ipv4: 172.20.20.17
+      ports:
+        - 57417:57400
     leaf8:
       kind: nokia_srlinux
       type: ixr-d2l
       startup-config: configs/leaf8.cfg
       mgmt-ipv4: 172.20.20.18
+      ports:
+        - 57418:57400
     # alpine linux nodes with interface config bind and execution
     host1:
       kind: linux

@@ -12,3 +12,13 @@ ip link add link bond0 name bond0.34 type vlan id 34
 ip link set bond0.34 up
 ip addr add 10.34.34.34/24 dev bond0.34
 ip route add 10.78.78.0/24 via 10.34.34.1
+
+# Install iperf3 and start server, then run continuous tests to host1
+apk add --no-cache iperf3
+iperf3 -s -D
+
+# Run iperf3 tests every 30 seconds continuously
+(while true; do
+  sleep 30
+  iperf3 -c 10.40.40.10 -t 10 -i 5
+done) &
