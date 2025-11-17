@@ -20,5 +20,5 @@ iperf3 -s -D
 # Run iperf3 tests every 30 seconds continuously
 (while true; do
   sleep 30
-  iperf3 -c 10.40.40.10 -t 10 -i 5
+  iperf3 -c 10.78.78.78 -t 10 -i 5
 done) &
