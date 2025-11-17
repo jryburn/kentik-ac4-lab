@@ -10,7 +10,7 @@ for device in $DEVICES; do
     docker exec "clab-evpn-clos2-$device" gnmic -a 127.0.0.1:57411 \
         -u "$USERNAME" -p "$PASSWORD" --insecure \
         set --update-path "/system/sflow/collector[collector-id=1]/collector-address" \
-        --update-value "172.21.21.1"
+        --update-value "172.20.20.1"
 done
 
-echo "Done! All devices now sending sFlow to 172.21.21.1"
+echo "Done! All devices now sending sFlow to 172.20.20.1"
