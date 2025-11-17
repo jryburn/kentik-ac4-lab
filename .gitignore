@@ -3,3 +3,6 @@
 
 # Clab Artifacts
 clab-evpn-clos2/
+
+scripts/enable-gnmi.sh
+scripts/update-sflow-collector.sh
