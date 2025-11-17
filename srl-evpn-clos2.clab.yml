@@ -20,6 +20,7 @@ topology:
       mgmt-ipv4: 172.20.20.21
       ports:
         - 57421:57400
+        - 16121:161/udp
     spine2:
       kind: nokia_srlinux
       type: ixr-d5
@@ -27,6 +28,7 @@ topology:
       mgmt-ipv4: 172.20.20.22
       ports:
         - 57422:57400
+        - 16122:161/udp
     leaf1:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -34,6 +36,7 @@ topology:
       mgmt-ipv4: 172.20.20.11
       ports:
         - 57411:57400
+        - 16111:161/udp
     leaf2:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -41,6 +44,7 @@ topology:
       mgmt-ipv4: 172.20.20.12
       ports:
         - 57412:57400
+        - 16112:161/udp
     leaf3:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -48,6 +52,7 @@ topology:
       mgmt-ipv4: 172.20.20.13
       ports:
         - 57413:57400
+        - 16113:161/udp
     leaf4:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -55,6 +60,7 @@ topology:
       mgmt-ipv4: 172.20.20.14
       ports:
         - 57414:57400
+        - 16114:161/udp
     leaf5:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -62,6 +68,7 @@ topology:
       mgmt-ipv4: 172.20.20.15
       ports:
         - 57415:57400
+        - 16115:161/udp
     leaf6:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -69,6 +76,7 @@ topology:
       mgmt-ipv4: 172.20.20.16
       ports:
         - 57416:57400
+        - 16116:161/udp
     leaf7:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -76,6 +84,7 @@ topology:
       mgmt-ipv4: 172.20.20.17
       ports:
         - 57417:57400
+        - 16117:161/udp
     leaf8:
       kind: nokia_srlinux
       type: ixr-d2l
@@ -83,6 +92,7 @@ topology:
       mgmt-ipv4: 172.20.20.18
       ports:
         - 57418:57400
+        - 16118:161/udp
     # alpine linux nodes with interface config bind and execution
     host1:
       kind: linux
